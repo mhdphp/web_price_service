@@ -17,7 +17,8 @@ class Utils(object):
         Check that the password that the user sent match the password in the database.
         The database password is encrypted more than the user's password at this stage.
         :param password: shat512-hashed password
-        :param encrypted_hashed_password: pbkdf2-shat512 encrypted password
+        :param hashed_password: pbkdf2-shat512 encrypted password
         :return: True if password matches, False otherwise
         """
         return pbkdf2_sha512.verify(password, hashed_password)
+
