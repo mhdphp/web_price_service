@@ -4,6 +4,13 @@ from src.common.database import Database
 app = Flask(__name__)
 # load config file
 app.config.from_object('config')
+# create a secure key for cookies generate by Flask to be secure
+app.secret_key = "123"
+
+
+@app.route('/rahan')
+def rahan():
+    return "This is rahan"
 
 
 #initialize database
@@ -15,3 +22,5 @@ def init_db():
 # register the user_blueprint
 from src.models.users.views import user_blueprint
 app.register_blueprint(user_blueprint, url_prefix='/users')
+
+
