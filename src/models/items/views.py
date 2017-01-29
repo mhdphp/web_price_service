@@ -9,13 +9,13 @@ def item_page():
     pass
 
 
-@item_blueprint.route('/load')
-def load_item():
-    """
-    Loads an item data using their store and return a JSON representation of it
-    :return:
-    """
-    pass
+# @item_blueprint.route('/load')
+# def load_item():
+#     """
+#     Loads an item data using their store and return a JSON representation of it
+#     :return:
+#     """
+#     pass
 
 
 
