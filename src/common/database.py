@@ -20,3 +20,8 @@ class Database(object):
     @staticmethod
     def find_one(collection, query):
         return Database.DATABASE[collection].find_one(query)
+
+    @staticmethod
+    def update(collection, query, data):
+        # upsert=True, if don't find an element with query, then insert the data
+        return Database.DATABASE[collection].update(query, data, upsert=True)
