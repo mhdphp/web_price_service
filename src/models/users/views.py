@@ -34,7 +34,7 @@ def login_user():
         except UsersErrors.UserError as e:
             return e.message
 
-    return render_template("users/login.html")
+    return render_template("users/login.jinja2")
 
 
 # define the register end-point
@@ -51,7 +51,7 @@ def register_view_user():
         except UsersErrors.UserError as e:
             return e.message
 
-    return render_template('users/register.html')
+    return render_template('users/register.jinja2')
 
 
 # define logout end-point
