@@ -2,6 +2,17 @@
 
 {% block content %}
 
-    <p>This is a successful test...</p>
+    <div class="jumbotron">
+        <h1>Price Service</h1>
+        <p>
+           We scan online stores to alert you of price drops in items that interest you.
+        </p>
+        <p>Just sign up and get started by adding the URL of an item that wish to track.</p>
+        <p>
+            <a class="btn btn-primary btn-lg" href="{{ url_for('users.register_user') }}" role="button">
+                Sign up
+            </a>
+        </p>
+    </div>
 
 {% endblock %}

@@ -57,7 +57,8 @@ def register_view_user():
 # define logout end-point
 @user_blueprint.route('/logout')
 def logout_user():
-    pass
+    session['email'] = None
+    return redirect(url_for('home'))
 
 
 # define register end-point
