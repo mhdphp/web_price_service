@@ -4,6 +4,12 @@ from flask import Blueprint
 # define stores blueprint
 store_blueprint = Blueprint('stores', __name__)
 
-@store_blueprint.route('/store/<string:name')
-def store_page():
+
+@store_blueprint.route('/')
+def index():
+    return 'This is the stores index'
+
+
+@store_blueprint.route('/store/<string:name>')
+def store_page(name):
     pass
