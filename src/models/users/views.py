@@ -18,7 +18,9 @@ def login_user():
 
     if request.method == 'POST':
         email = request.form['email']
-        password = request.form['hashed']
+        # password = request.form['hashed']
+        # the same as for the register case
+        password = request.form['password']
 
         try:
             # check if the email, password are valid
@@ -42,7 +44,9 @@ def login_user():
 def register_view_user():
     if request.method == 'POST':
         email = request.form['email']
-        password = request.form['hashed']
+        # password = request.form['hashed']
+        # no longer required, due to ssl
+        password = request.form['password']
 
         try:
             if User.register_user(email, password):
