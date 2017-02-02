@@ -81,3 +81,12 @@ class Alert(object):
         return [cls(**elem) for elem in Database.find(AlertConstants.COLLECTION, {'user_email':user_email})]
 
 
+    # find an alert by an id
+    @classmethod
+    def find_by_id(cls, alert_id):
+        """
+        Returns an object with the properties as in database
+        :param alert_id:
+        :return: an alert object with(user_email, price_limit, item, last_checked, _id)
+        """
+        return cls(**Database.find_one(collection=AlertConstants.COLLECTION, query={'_id': alert_id}))
