@@ -1,1 +1,2 @@
 
+COLLECTION = 'users'

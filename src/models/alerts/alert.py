@@ -75,7 +75,9 @@ class Alert(object):
             self.send_email()
 
 
-
-
+    # return list of objects alerts for the specified user
+    @classmethod
+    def find_by_user_email(cls, user_email):
+        return [cls(**elem) for elem in Database.find(AlertConstants.COLLECTION, {'user_email':user_email})]
 
 

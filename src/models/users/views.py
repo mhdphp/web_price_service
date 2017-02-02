@@ -71,10 +71,12 @@ def register_user():
     pass
 
 
-# define alerts end-point
+# define alerts end-point, provide a list of alerts for a logged in user
 @user_blueprint.route('/alerts')
 def user_alerts():
-    return "This is the alert page."
+    user = User.find_by_email(session['email'])
+    alerts = user.get_alerts()
+    return render_template('users/alerts.jinja2', alerts=alerts)
 
 
 # check-up alerts for a specified user

@@ -4,6 +4,8 @@ from src.common.database import Database
 from src.common.utils import Utils
 # import both classes from src.models.users.errors and give a name UserErrors
 import src.models.users.errors as UserErrors
+from src.models.alerts.alert import Alert
+import src.models.users.constants as UserConstants
 
 
 class User(object):
@@ -26,7 +28,7 @@ class User(object):
         :return: True if valid, False otherwise
         """
         # password in sha512 -> pbkdf2_sha512
-        user_data = Database.find_one(collection='users', query={"email": email})
+        user_data = Database.find_one(UserConstants.COLLECTION, query={"email": email})
 
         if user_data is None:
             # tell the user that he email provided is not found in the database
@@ -50,7 +52,7 @@ class User(object):
         """
 
         # check the db for the email provided
-        user_data = Database.find_one(collection='users', query={'email': email})
+        user_data = Database.find_one(UserConstants.COLLECTION, query={'email': email})
 
         # if we got a not None result
         if user_data is not None:
@@ -68,7 +70,7 @@ class User(object):
 
 
     def save_to_db(self):
-        Database.insert(collection='users', data=self.json())
+        Database.insert(collection=UserConstants.COLLECTION, data=self.json())
 
 
     def json(self):
@@ -77,3 +79,14 @@ class User(object):
             'email': self.email,
             'password': self.password
         }
+
+    # find user by email
+    @classmethod
+    def find_by_email(cls, email):
+        return cls(**Database.find_one(UserConstants.COLLECTION, query={'email':email}))
+
+
+    # find alerts by user email
+    def get_alerts(self):
+        return Alert.find_by_user_email(self.email)
+
