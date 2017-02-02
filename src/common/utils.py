@@ -7,7 +7,8 @@ class Utils(object):
     @staticmethod
     def email_is_valid(email):
         # ^ and $ represents the start and end of the string
-        email_address_matcher = re.compile('^[\w-]+@([\w-]+\.)+[\w]+$')
+        # email_address_matcher = re.compile('^[\w-]+@([\w-]+\.)+[\w]+$')
+        email_address_matcher = re.compile('^[\w+\.]*[\w+]@([\w-]+\.)+[\w]+$')
         if email_address_matcher.match(email):
             return True
         else:

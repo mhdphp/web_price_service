@@ -19,7 +19,7 @@ def deactivate_alert(alert_id):
     pass
 
 
-@alert_blueprint.route('/alert/<string:alert_id>')
+@alert_blueprint.route('/<string:alert_id>')  # /alerts/<string:alert_id>
 # @alert_blueprint.route('/alert')
 def get_alert(alert_id):
     pass
