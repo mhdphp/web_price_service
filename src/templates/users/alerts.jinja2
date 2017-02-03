@@ -7,7 +7,7 @@
     </div>
     <div class="list-group">
         {% for alert in alerts %}
-            <a href="{{ url_for('alerts.get_alert', alert_id=alert._id) }}" class="list-group-item">
+            <a href="{{ url_for('alerts.get_alert_page', alert_id=alert._id) }}" class="list-group-item">
                 <h4 class="list-group-item-header">Alert for <strong>{{ alert.item.name }}</strong></h4>
                 <br class="list-group-item-text">
                 Last price found <strong>&pound{{ alert.item.price }}</strong> </br>
