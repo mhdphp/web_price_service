@@ -1,7 +1,10 @@
 from flask import Blueprint
 from flask import render_template
+from flask import request
+from flask import session
 
 from src.models.alerts.alert import Alert
+from src.models.items.item import Item
 
 alert_blueprint = Blueprint('alerts', __name__)
 
@@ -10,10 +13,25 @@ alert_blueprint = Blueprint('alerts', __name__)
 def index():
     return 'This is the alerts index'
 
-
-@alert_blueprint.route('/new')
+# create new alert
+@alert_blueprint.route('/new', methods=['GET', 'POST'])
 def create_alert():
-    pass
+    if request.method == 'POST':
+        # get the values of the variables from the form
+        name = request.form['name']
+        url = request.form['url']
+        price_limit = request.form['price_limit']
+
+        # now we must create an item object and save it to the database
+        item = Item(name, url)
+        item.save_to_mongo()
+
+        # after that we may create the alert object
+        alert = Alert(session['email'], price_limit, item._id)
+        alert.load_item_price() # this is already saved alert to the database
+
+    # if is 'GET'
+    return render_template('alerts/new_alert.jinja2')
 
 
 @alert_blueprint.route('/deactivate/<string:alert_id>')
