@@ -35,7 +35,9 @@ class Store(object):
 
 
     def save_to_mongo(self):
-        Database.insert(collection=StoreItems.COLLECTION, data=self.json())
+        # Database.insert(collection=StoreItems.COLLECTION, data=self.json())
+        # change to update for avoiding the duplicateKeyError
+        Database.update(collection=StoreItems.COLLECTION, query={'_id':self._id}, data=self.json())
 
 
     @classmethod
