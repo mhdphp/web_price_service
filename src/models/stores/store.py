@@ -83,3 +83,7 @@ class Store(object):
     @classmethod
     def all(cls):
         return [cls(**elem) for elem in Database.find(StoreItems.COLLECTION, query={})]
+
+
+    def delete(self):
+        Database.remove(StoreItems.COLLECTION, {'_id':self._id})

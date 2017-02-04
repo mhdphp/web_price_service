@@ -51,7 +51,8 @@ def edit_store(store_id):
 
 @store_blueprint.route('/delete/<string:store_id>')
 def delete_store(store_id):
-    return 'Delete store'
+    Store.get_by_id(store_id).delete()
+    return redirect(url_for('.index'))
 
 
 
