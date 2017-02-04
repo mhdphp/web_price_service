@@ -1,0 +1,24 @@
+{% extends "base.jinja2" %}
+
+{% block content %}
+    <div class="page-header">
+        <h2>Stores <small>list of supported stores</small></h2>
+    </div>
+    <div class="list-group">
+        {% for store in stores %}
+            <a href="{{ url_for('stores.store_page', store_id = store._id) }}" class="list-group-item">
+                <h4 class="list-group-item-title">{{ store.name }}</h4>
+                <p class="list-group-item-text">
+                    All the url in store should start with:
+                    <strong>{{ store.url_prefix }}</strong>
+                </p>
+            </a>
+        {% endfor %}
+    </div>
+    <!-- stores.create_store is blueprint='stores', and the method in stores/view.py -->
+    <a href="{{ url_for('stores.create_store') }}" class="btn btn-success">
+        <span class="glyphicon glyphicon-plus"></span>
+        Create new
+    </a>
+{% endblock %}
+

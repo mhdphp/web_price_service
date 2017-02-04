@@ -75,3 +75,9 @@ class Store(object):
         url_prefix = str_val[:len(str_val)-1]
 
         return cls(**Database.find_one(StoreItems.COLLECTION, {'url_prefix': url_prefix}))
+
+
+    # find all stores
+    @classmethod
+    def all(cls):
+        return [cls(**elem) for elem in Database.find(StoreItems.COLLECTION, query={})]
