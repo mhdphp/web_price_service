@@ -26,6 +26,8 @@
             {% else %}
                 <a href="{{ url_for('alerts.activate_alert', alert_id=alert._id) }}"
                    class="btn btn-success" role="button">Activate Alert</a>
+                <a href="{{  url_for('alerts.delete_alert', alert_id=alert._id) }}"
+                   class="btn btn-danger" role="button">Delete Permanently Alert</a>
             {% endif %}
             <a href="{{ url_for('alerts.check_alert_price', alert_id=alert._id) }}"
                class="btn btn-warning" role="button">Check Alert Price</a>
