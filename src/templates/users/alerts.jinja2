@@ -19,7 +19,10 @@
                 <strong>
                     {{ alert.last_checked.strftime("%d-%m-%Y at %H:%M:%S ") }}
                 </strong>
-                </p>`
+                </p>
+                <p> Price Limit Set:
+                    <strong>{{ alert.price_limit }}</strong>
+                </p>
             </a>
         {% endfor %}
     </div>
