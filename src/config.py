@@ -1,5 +1,6 @@
 
 DEBUG = True
+# check what a set, and frozen set is
 ADMINS = frozenset([
-    "yourname@yourdomain.com"
+    "mihai.enuica@gmail.com"
 ])

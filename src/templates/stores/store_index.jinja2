@@ -16,9 +16,12 @@
         {% endfor %}
     </div>
     <!-- stores.create_store is blueprint='stores', and the method in stores/view.py -->
-    <a href="{{ url_for('stores.create_store') }}" class="btn btn-success">
-        <span class="glyphicon glyphicon-plus"></span>
-        Create new
-    </a>
+    <!-- display this button only for email listed in config.py ADMINS -->
+    {% if session['email'] in config.ADMINS %}
+        <a href="{{ url_for('stores.create_store') }}" class="btn btn-success">
+            <span class="glyphicon glyphicon-plus"></span>
+            Create new
+        </a>
+    {% endif %}
 {% endblock %}
 
