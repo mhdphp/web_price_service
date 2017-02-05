@@ -6,11 +6,10 @@
         <h1>
             Store <small>{{ store.name }}</small>
         </h1>
-        <p>All URL's in this store should start with
-            <strong>{{ store.url_prefix }}</strong>
-        </p>
     </div>
-
+    <p>All URL's in this store should start with
+        <strong>{{ store.url_prefix }}</strong>
+    </p>
     <!-- Only administrators, with emails in config.py, ADMINS, are able to see these buttons -->
     {% if session['email'] in config.ADMINS %}
         <div class="panel panel-default">
