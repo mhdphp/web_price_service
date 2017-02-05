@@ -1,2 +1,3 @@
 src/models/alerts/constants.py
-.idea/
+\.idea/
+# this is a sample
