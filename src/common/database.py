@@ -1,8 +1,11 @@
 import pymongo
+import os
 
 class Database(object):
 
-    URI = "mongodb://127.0.0.1:27017"
+    # URI = "mongodb://127.0.0.1:27017"
+    # for deployment on Heroku
+    URI = os.environ.get("MONGOLAB_URI")
     DATABASE = None
 
 
