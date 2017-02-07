@@ -14,7 +14,8 @@ class Database(object):
         client = pymongo.MongoClient(Database.URI)
         # Database.DATABASE = client['fullstack']
         # for deployment on the Heroku
-        Database.DATABASE = client.get_default_database()
+        # Database.DATABASE = client.get_default_database() # don't work
+        Database.DATABASE =client['heroku_g6fkvhsw']
 
     @staticmethod
     def insert(collection, data):
